@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  db:
+    container_name: test-postgresSQL-db
+    image: postgres:11.21-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: test_nest_js
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
