@@ -6,12 +6,18 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { CountriesService } from './countries.service';
 import { CreateCountryDto } from './dto/create-country.dto';
 import { UpdateCountryDto } from './dto/update-country.dto';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '../auth/auth.guard';
 
+@ApiTags('countries')
+@ApiBearerAuth('Authorization')
 @Controller('countries')
+@UseGuards(AuthGuard)
 export class CountriesController {
   constructor(private readonly countriesService: CountriesService) {}
 

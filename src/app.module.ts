@@ -6,6 +6,7 @@ import { CountriesModule } from './modules/countries/countries.module';
 import { MorganMiddleware } from './middleware/morgan.middleware';
 import { ActorsModule } from './modules/actors/actors.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { FilmsModule } from './modules/films/films.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AuthModule } from './modules/auth/auth.module';
     CountriesModule,
     ActorsModule,
     AuthModule,
+    FilmsModule,
   ],
   controllers: [],
   providers: [],

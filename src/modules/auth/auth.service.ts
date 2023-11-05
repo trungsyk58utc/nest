@@ -1,7 +1,7 @@
 import {
   Body,
-  Headers,
   Injectable,
+  Request,
   UnauthorizedException,
 } from '@nestjs/common';
 import { Auth } from './entity/auth.entity';
@@ -37,11 +37,9 @@ export class AuthService {
     return this.createToken(user.id);
   }
 
-  async getMe(@Headers() headers: any) {
-    const token = headers.authorization.split(' ')[1];
-    const tokenData = await this.decodeToken.verifyAccessToken(token);
+  async getMe(@Request() req: any) {
     const user = await this.userRepository.findOne({
-      where: { id: tokenData.userId },
+      where: { id: req.user.userId },
     });
     return user;
   }

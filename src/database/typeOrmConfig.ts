@@ -1,5 +1,9 @@
 import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
+import { Actor } from 'src/modules/actors/entities/actor.entity';
+import { Country } from 'src/modules/countries/entities/country.entity';
+import { Film } from 'src/modules/films/entities/film.entity';
+import { User } from 'src/modules/users/entities/user.entity';
 import { DataSource } from 'typeorm';
 
 config();
@@ -14,4 +18,5 @@ export default new DataSource({
   username: configService.getOrThrow('DB_USERNAME'),
   password: configService.getOrThrow('DB_PASSWORD'),
   migrations: ['src/migrations/**'],
+  entities: [Actor, Country, User, Film],
 });
